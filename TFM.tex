@@ -1,0 +1,72 @@
+\documentclass[12pt]{report}
+
+% Paquetes LaTeX y estilos globales
+\input{etc/pkgs}
+\input{etc/style}
+\patchcmd{\bordermatrix}{\cr}{\\}{}{}
+% Comienzo del documento
+
+
+\begin{document}
+    % Portada y secciones no numeradas
+    \input{sections/00_portada}
+    %\input{sections/originalidad}
+    \input{sections/00_agradecimientos}
+    \input{sections/00_resumen}
+    \input{sections/00_abstract}
+
+    % Índice del documento y de figuras
+    \begingroup
+        % Los enlaces son normalmente azules, pero en los índices se
+        % configuran a negro para que no aparezca todo azul
+        \hypersetup{linkcolor=black}
+        \renewcommand{\contentsname}{Contenidos}
+        \tableofcontents
+        \renewcommand{\listfigurename}{Índice de figuras}
+        \renewcommand{\figurename}{Figura}
+        \renewcommand{\listtablename}{Índice de tablas}
+        \renewcommand{\tablename}{Tabla}
+        \listoffigures
+        \listofcodes
+        %\lstlistoflistings
+        \listoftables
+
+    \endgroup
+
+    \hypersetup{linkcolor=black}
+
+    % Cambia el estilo de números de página a normal
+    \clearpage\pagenumbering{arabic}
+    \input{sections/01_introduccion}
+    \input{sections/02_objetivos}
+    \input{sections/03_marcoteorico}
+    \input{sections/04_orientacion}
+    \input{sections/05_mejoras}
+    \input{sections/06_conclusiones}
+
+    \begingroup
+        % Bibliografía
+        \renewcommand{\bibname}{Bibliografía}
+        \hypersetup{linkcolor=black}
+        \bibliographystyle{plainnat}
+        \bibliography{bibliografia.bib}
+    \endgroup
+    % Capítulos del trabajo
+    \input{sections/01_glosario}
+    %Apendices
+    \appendix
+    \input{sections/apendices}
+
+
+
+% Fin del documento
+\end{document}
+
+%%% Local Variables:
+%%% TeX-master: t
+%%% coding: utf-8
+%%% fill-column: 75
+%%% ispell-local-dictionary: "spanish"
+%%% TeX-parse-self: t
+%%% TeX-auto-save: t
+%%% End:
